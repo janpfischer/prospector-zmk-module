@@ -30,7 +30,7 @@ lv_obj_t *zmk_display_status_screen() {
     lv_obj_set_style_bg_opa(screen, 255, LV_PART_MAIN);
 
     zmk_widget_output_status_init(&output_status_widget, screen);
-    lv_obj_align(zmk_widget_output_status_obj(&output_status_widget), LV_ALIGN_TOP_LEFT, 10, -20);
+    lv_obj_align(zmk_widget_output_status_obj(&output_status_widget), LV_ALIGN_RIGHT_MID, -10, 46);
 
 #ifdef CONFIG_DT_HAS_ZMK_BEHAVIOR_CAPS_WORD_ENABLED
     zmk_widget_caps_word_indicator_init(&caps_word_indicator_widget, screen);
