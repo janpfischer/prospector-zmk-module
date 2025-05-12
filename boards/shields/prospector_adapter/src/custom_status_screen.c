@@ -7,6 +7,8 @@
 #include "widgets/battery_bar.h"
 #include "widgets/caps_word_indicator.h"
 
+#include "widgets/output_status.h"
+
 #include <fonts.h>
 #include <sf_symbols.h>
 
@@ -19,11 +21,16 @@ static struct zmk_widget_layer_roller layer_roller_widget;
 static struct zmk_widget_battery_bar battery_bar_widget;
 static struct zmk_widget_caps_word_indicator caps_word_indicator_widget;
 
+static struct zmk_widget_output_status output_status_widget;
+
 lv_obj_t *zmk_display_status_screen() {
     lv_obj_t *screen;
     screen = lv_obj_create(NULL);
     lv_obj_set_style_bg_color(screen, lv_color_hex(0x000000), LV_PART_MAIN);
     lv_obj_set_style_bg_opa(screen, 255, LV_PART_MAIN);
+
+    zmk_widget_output_status_init(&output_status_widget, screen);
+    lv_obj_align(zmk_widget_output_status_obj(&output_status_widget), LV_ALIGN_TOP_LEFT, 0, 0);
 
 #ifdef CONFIG_DT_HAS_ZMK_BEHAVIOR_CAPS_WORD_ENABLED
     zmk_widget_caps_word_indicator_init(&caps_word_indicator_widget, screen);
